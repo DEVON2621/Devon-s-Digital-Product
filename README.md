@@ -1,2 +1,340 @@
-# Devon-s-Digital-Product
-Devon's Math eBook Store Unlock your math potential with easy-to-understand guides!
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Devon's Digital Product</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body {
+      background-color: #fdfdfd;
+      color: #222;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    header {
+      background-color: #2c3e50;
+      padding: 20px;
+      color: #fff;
+      text-align: center;
+      font-size: 2rem;
+      font-weight: bold;
+    }
+
+    main {
+      flex: 1;
+      max-width: 960px;
+      margin: 30px auto;
+      padding: 0 20px;
+    }
+
+    .intro-banner {
+      background-color: #e8f0fe;
+      color: #333;
+      padding: 30px;
+      border-radius: 12px;
+      margin-bottom: 30px;
+      text-align: center;
+    }
+
+    .product-card {
+      background: #ffffff;
+      border: 1px solid #ddd;
+      border-radius: 10px;
+      padding: 25px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+      margin-bottom: 30px;
+      text-align: center;
+    }
+
+    .product-title {
+      font-size: 1.8rem;
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+
+    .product-description {
+      margin-bottom: 20px;
+      color: #444;
+    }
+
+    .price {
+      font-size: 1.6rem;
+      color: #27ae60;
+      margin-bottom: 20px;
+    }
+
+    .buy-btn {
+      background-color: #27ae60;
+      border: none;
+      color: white;
+      padding: 12px 25px;
+      font-size: 1rem;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    .buy-btn:hover {
+      background-color: #219150;
+    }
+
+    .payment-info {
+      display: none;
+      background: #f1f1f1;
+      padding: 20px;
+      border-radius: 10px;
+      border: 1px solid #ccc;
+    }
+
+    .payment-info ul {
+      margin-top: 10px;
+      padding-left: 20px;
+    }
+
+    footer {
+      background: #2c3e50;
+      color: white;
+      text-align: center;
+      padding: 15px;
+    }
+
+    .seller-panel {
+      background: #f9f9f9;
+      border: 1px solid #ddd;
+      padding: 20px;
+      border-radius: 10px;
+    }
+
+    .seller-panel h3 {
+      margin-bottom: 20px;
+    }
+
+    .seller-panel input,
+    .seller-panel textarea {
+      width: 100%;
+      margin-bottom: 15px;
+      padding: 10px;
+      border-radius: 5px;
+      border: 1px solid #bbb;
+      font-size: 1rem;
+    }
+
+    @media (max-width: 600px) {
+      .product-title {
+        font-size: 1.4rem;
+      }
+
+      .price {
+        font-size: 1.4rem;
+      }
+
+      .buy-btn {
+        width: 100%;
+      }
+    }
+
+    /* Modal CSS */
+    .modal {
+      display: none; /* Hidden by default */
+      position: fixed; 
+      z-index: 1000; /* On top */
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%; 
+      overflow: auto; /* Enable scroll if needed */
+      background-color: rgba(0,0,0,0.5);
+      transition: opacity 0.3s ease;
+    }
+    .modal[aria-hidden="false"] {
+      display: block;
+    }
+
+    .modal-content {
+      background-color: #fff;
+      margin: 10% auto; 
+      padding: 20px;
+      border-radius: 12px;
+      max-width: 450px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+      position: relative;
+      outline: none;
+    }
+
+    .modal-content h2 {
+      margin-top: 0;
+      font-size: 1.6rem;
+      margin-bottom: 15px;
+      color: #333;
+    }
+
+    .modal-content p {
+      margin-bottom: 20px;
+      font-size: 1rem;
+      color: #555;
+    }
+
+    .modal-content button {
+      background-color: #27ae60;
+      border: none;
+      color: white;
+      padding: 12px 20px;
+      font-size: 1rem;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+    .modal-content button:hover {
+      background-color: #219150;
+    }
+
+    .modal-close {
+      position: absolute;
+      top: 12px;
+      right: 15px;
+      background: none;
+      border: none;
+      font-size: 1.5rem;
+      cursor: pointer;
+      color: #888;
+      font-weight: bold;
+    }
+    .modal-close:hover {
+      color: #333;
+    }
+  </style>
+</head>
+<body>
+
+  <header>Devon's Digital Product</header>
+
+  <main>
+    <section class="intro-banner">
+      <h2>📘 Welcome to Devon's Math eBook Store</h2>
+      <p>Unlock your math potential with easy-to-understand guides!</p>
+    </section>
+
+    <div class="product-card">
+      <div class="product-title" id="productTitle">Ultimate Math Mastery Guide</div>
+      <div class="product-description" id="productDescription">
+        A downloadable eBook to master math concepts and boost exam results.
+      </div>
+      <div class="price" id="productPrice">₱299.00</div>
+      <button class="buy-btn" id="buyNowBtn">Buy Now via GCash</button>
+    </div>
+
+    <div class="payment-info" id="paymentInfo" aria-live="polite" role="region">
+      <h3>Payment Instructions:</h3>
+      <ul>
+        <li>Open your GCash app.</li>
+        <li>Send ₱<span id="amount">299.00</span> to <strong>0953-120-3503</strong></li>
+        <li>Use message: "Purchase - Your Name"</li>
+        <li>Email your payment screenshot to <strong>devon@example.com</strong></li>
+      </ul>
+    </div>
+
+    <div class="seller-panel">
+      <h3>🛠 Seller Control Panel</h3>
+      <input type="text" id="newTitle" placeholder="Enter Product Title" />
+      <textarea id="newDescription" rows="3" placeholder="Enter Product Description"></textarea>
+      <input type="number" id="newPrice" placeholder="Enter Product Price (e.g. 299)" />
+      <button class="buy-btn" onclick="updateProduct()">Update Product Info</button>
+    </div>
+
+    <!-- Modal HTML -->
+    <div id="purchaseModal" class="modal" aria-hidden="true" role="dialog" aria-labelledby="modalTitle" aria-modal="true">
+      <div class="modal-content" tabindex="0">
+        <button class="modal-close" aria-label="Close modal" id="modalCloseBtn">&times;</button>
+        <h2 id="modalTitle">Confirm Purchase</h2>
+        <p>Are you sure you want to buy <strong id="modalProductTitle">Ultimate Math Mastery Guide</strong> for <span id="modalProductPrice">₱299.00</span> via GCash?</p>
+        <button id="confirmPurchaseBtn">Yes, Proceed to Payment</button>
+      </div>
+    </div>
+  </main>
+
+  <footer>&copy; 2025 Devon's Digital Product. All rights reserved.</footer>
+
+  <script>
+    // Toggle payment info (old button, still kept for reference)
+    function showPayment() {
+      const info = document.getElementById('paymentInfo');
+      info.style.display = info.style.display === 'block' ? 'none' : 'block';
+    }
+
+    // Update product info from seller panel inputs
+    function updateProduct() {
+      const title = document.getElementById('newTitle').value.trim();
+      const description = document.getElementById('newDescription').value.trim();
+      const price = document.getElementById('newPrice').value;
+
+      if (!title && !description && !price) {
+        alert("Please enter at least one field.");
+        return;
+      }
+
+      if (title) {
+        document.getElementById('productTitle').innerText = title;
+        document.getElementById('modalProductTitle').innerText = title;
+      }
+      if (description) document.getElementById('productDescription').innerText = description;
+      if (price) {
+        const formattedPrice = `₱${price}.00`;
+        document.getElementById('productPrice').innerText = formattedPrice;
+        document.getElementById('amount').innerText = `${price}.00`;
+        document.getElementById('modalProductPrice').innerText = formattedPrice;
+      }
+    }
+
+    // Modal functionality for purchase confirmation
+    const buyNowBtn = document.getElementById('buyNowBtn');
+    const modal = document.getElementById('purchaseModal');
+    const modalCloseBtn = document.getElementById('modalCloseBtn');
+    const confirmPurchaseBtn = document.getElementById('confirmPurchaseBtn');
+    const paymentInfo = document.getElementById('paymentInfo');
+
+    // Open modal on Buy Now click
+    buyNowBtn.addEventListener('click', () => {
+      modal.setAttribute('aria-hidden', 'false');
+      modal.querySelector('.modal-content').focus();
+    });
+
+    // Close modal function
+    function closeModal() {
+      modal.setAttribute('aria-hidden', 'true');
+      buyNowBtn.focus();
+    }
+
+    modalCloseBtn.addEventListener('click', closeModal);
+
+    // Close modal when clicking outside modal-content
+    modal.addEventListener('click', (e) => {
+      if (e.target === modal) closeModal();
+    });
+
+    // Close modal on ESC key
+    document.addEventListener('keydown', (e) => {
+      if (e.key === "Escape" && modal.getAttribute('aria-hidden') === 'false') {
+        closeModal();
+      }
+    });
+
+    // Confirm purchase button: show payment info and close modal
+    confirmPurchaseBtn.addEventListener('click', () => {
+      closeModal();
+      // Show payment info area
+      paymentInfo.style.display = 'block';
+      paymentInfo.focus();
+    });
+  </script>
+
+</body>
+</html>
